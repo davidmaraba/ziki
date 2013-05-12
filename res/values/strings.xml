@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, ZikiActivity!</string>
+    <string name="app_name">Ziki</string>
+    <string name="helpString">Terms of Service \nZiki App is free to download and use. Ziki App is operated by Gozomo Kenya Limited. To download content from Ziki App  users agree to abide by the terms of service of Ziki App and Gozomo Kenya Limited. \n\nContent download terms and conditions:\nSubscription Service  KES30 per week. You will be able to download three songs a week. If you want to download more than 3 songs you will be  billed at KES30 per each additional song you download. \n\nCustomer Support: \nemail: ke@smshelp.info\nHelpline:XXX XXX XXXX </string>
+</resources>

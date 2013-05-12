@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="ke.co.innova"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="8" />
+
+	<!-- 
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:label="@string/app_name"
+            android:name=".AndroidParsingActivity" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>  -->
+        
+        <!-- Single List Item View -->
+        
+        <!--
+        <activity
+            android:label="Single Menu Item"
+            android:name=".SingleMenuItemActivity" >
+        </activity>
+        <activity
+            android:label="Ziki Menu Item"
+            android:name=".ZikiActivity" >
+        </activity>
+         <activity
+            android:label="Json Parser"
+            android:name=".JSONParser" >
+        </activity>
+    </application>
+     -->
+     <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" 
+            android:debuggable="false"
+    android:testOnly="false">
+        <activity
+            android:configChanges="keyboardHidden|orientation"
+            android:name=".AndroidTabAndListView"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Inbox Activity -->
+        <activity android:name=".InboxActivity" />
+        
+          <activity android:name=".Play" />
+        
+        <activity android:name=".AllHits"></activity>
+        <!-- .Gospel Activity -->
+        <activity android:name=".Gospel" />
+        
+        <activity android:name=".MyHits" />
+        
+        <activity android:name=".Hits" />
+         <!-- Gospel2 Activity -->
+        <activity android:name=".Gospel2" />
+        
+         <!-- Gospel2 Activity -->
+        <activity android:name=".Listview" />
+        
+        <!-- ..KenyanHits Activity -->
+        <activity android:name=".KenyanHits" />
+        
+                <!-- .Help Activity -->
+        <activity android:name=".Help" />
+        
+           <!-- .Help Activity -->
+        <activity android:name=".Help2" />
+        
+          <!-- .Search Activity -->
+        <activity android:name=".Search" />
+        
+          <!-- .Search2 Activity -->
+        <activity android:name=".Search2" />
+        
+        <activity android:name=".Play_Video" />
+        
+        <!-- Outbox Activity -->
+        <activity android:name=".OutboxActivity" />
+
+        <activity android:name=".Gospel_Hits" />
+        
+        <activity android:name=".New_Releases" />
+        
+        <activity android:name=".Ziki_Hits" />
+        <!-- Profile Activity -->
+        <activity android:name=".ProfileActivity" />
+          <service android:enabled="true" 
+            android:name=".MyPlayService"></service>
+        
+    </application>
+
+    <!-- Internet Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    
+</manifest>

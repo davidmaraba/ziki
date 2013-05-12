@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/list_selector" >
+    
+	<Button android:layout_height="wrap_content" android:id="@+id/button1" 
+	android:text="Top 10 Kenyan Hits" android:layout_alignParentTop="true"
+	 android:layout_alignParentLeft="true" android:layout_toLeftOf="@+id/date"
+	  android:layout_width="match_parent"></Button>
+	<Button android:layout_height="wrap_content" android:id="@+id/button2" 
+	android:text="Top 10 Gospel Hits" android:layout_alignParentTop="true"
+	 android:layout_alignParentLeft="true" android:layout_toLeftOf="@+id/date"
+	  android:layout_width="match_parent" ></Button>
+	<Button android:layout_height="wrap_content" android:id="@+id/btntopZikiHits" 
+	android:text="Top 10 Ziki Hits" android:layout_alignParentTop="true"
+	 android:layout_alignParentLeft="true" android:layout_toLeftOf="@+id/date"
+	  android:layout_width="match_parent"></Button>
+	<Button android:layout_height="wrap_content" android:id="@+id/btntopNewReleases" 
+	android:text="Top 10 New Releases" android:layout_alignParentTop="true"
+	 android:layout_alignParentLeft="true" android:layout_toLeftOf="@+id/date"
+	  android:layout_width="match_parent"></Button>
+	  </LinearLayout>
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+        
+        <!-- android:layout_width="fill_parent" -->
+
+</LinearLayout>
+</ScrollView>
