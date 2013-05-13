@@ -62,6 +62,7 @@ public class GospelAdapter extends BaseAdapter {
         ImageView thumb_image=(ImageView)vi.findViewById(R.id.list_image); // thumb image
         Button play=(Button) vi.findViewById(R.id.play);
         Button watch=(Button) vi.findViewById(R.id.watch);
+        Button download=(Button)vi.findViewById(R.id.download);
         
         vi.setTag(play);
         
@@ -85,16 +86,36 @@ public class GospelAdapter extends BaseAdapter {
         
         final String path_mp3 = song.get(Gospel.TAG_MP3);
         final String path_mp4=song.get(Gospel.TAG_MP4);
+        
+         download.setOnClickListener(new View.OnClickListener() {
+			
+			/* (non-Javadoc)
+			 * @see android.view.View.OnClickListener#onClick(android.view.View)
+			 */
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				AndroidTabAndListView.downloadIntent.putExtra("mp4_url",path_mp4);
+				AndroidTabAndListView.playSpec.setContent(AndroidTabAndListView.downloadIntent);
+				
+				AndroidTabAndListView.tabHost.getTabWidget().getChildAt(2).setVisibility(View.VISIBLE);
+				AndroidTabAndListView.tabHost.setCurrentTab(2);
+				/*AndroidTabAndListView ant=new AndroidTabAndListView();
+				ant.startDownloadActivity();*/
+			}
+		});
         watch.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				AndroidTabAndListView.playVideoIntent.putExtra("mp4_url",path_mp4);
+				((TextView)AndroidTabAndListView.tabHost.getTabWidget().getChildAt(2)).setText("Downloading");
 				AndroidTabAndListView.playSpec.setContent(AndroidTabAndListView.playVideoIntent);
 				
 				
 				AndroidTabAndListView.tabHost.getTabWidget().getChildAt(2).setVisibility(View.VISIBLE);
+				
 				AndroidTabAndListView.tabHost.setCurrentTab(2);
 			}
 		});

@@ -17,7 +17,7 @@ public class AndroidTabAndListView extends TabActivity {
 	private static final String PROFILE_SPEC = "Help";
 	public static TabHost tabHost;
 	public static TabSpec inboxSpec,hitsSpec,playSpec,profileSpec,outboxSpec;
-	public static Intent playVideoIntent,gospelIntent,zikiHitsIntent,newReleasesInten,playIntent;
+	public static Intent playVideoIntent,gospelIntent,zikiHitsIntent,newReleasesInten,playIntent,downloadIntent;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,7 @@ public class AndroidTabAndListView extends TabActivity {
         gospelIntent=new Intent(this,Gospel_Hits.class);
         zikiHitsIntent=new Intent(this,Ziki_Hits.class);
         newReleasesInten=new Intent(this,New_Releases.class);
+        downloadIntent=new Intent(this,Download.class);
         
         tabHost = getTabHost();
         
@@ -74,5 +75,9 @@ public class AndroidTabAndListView extends TabActivity {
         tabHost.getTabWidget().getChildAt(2).setVisibility(View.GONE);
     }
 
-	
+	public void startDownloadActivity()
+	{
+		// downloadIntent=new Intent(this,Download.class);
+		startActivity(downloadIntent);
+	}
 }
