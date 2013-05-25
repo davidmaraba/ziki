@@ -54,7 +54,7 @@ public class AndroidTabAndListView extends TabActivity {
          // Outbox Tab
        outboxSpec = tabHost.newTabSpec(OUTBOX_SPEC);
         outboxSpec.setIndicator(OUTBOX_SPEC, getResources().getDrawable(R.drawable.search));
-        Intent outboxIntent = new Intent(this, MyHits.class);
+        Intent outboxIntent = new Intent(this, Search.class);
         outboxSpec.setContent(outboxIntent);
         
         

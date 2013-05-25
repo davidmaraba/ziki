@@ -98,6 +98,9 @@ public class Gospel_Hits_Adapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				((TextView) AndroidTabAndListView.tabHost.getTabWidget()
+						.getChildAt(2).findViewById(android.R.id.title))
+						.setText("Downloading");
 				AndroidTabAndListView.downloadIntent.putExtra("mp4_url",
 						path_mp4);
 				AndroidTabAndListView.playSpec

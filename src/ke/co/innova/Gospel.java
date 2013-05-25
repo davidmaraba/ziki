@@ -72,12 +72,12 @@ public class Gospel extends ListActivity {
 		new LoadInbox().execute();
 
 		checkInternetConnectivty=new CheckInternetConnectivity(getApplicationContext());
-		
+		checkInternetConnectivty.checkConnectivity();
 		final Button button = (Button) findViewById(R.id.button1);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 
-				checkInternetConnectivty.checkConnectivity();
+				
 
 				if (CheckInternetConnectivity.isOnline) {
 					((TextView) AndroidTabAndListView.tabHost.getTabWidget()
@@ -177,7 +177,7 @@ public class Gospel extends ListActivity {
 	{
 		final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);//.create();
 		alertDialog.setTitle("No Network Connection");
-		alertDialog.setMessage("Plesae connect to a network and try again");
+		alertDialog.setMessage("Please connect to a network and try again");
 		
 		alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 

@@ -8,8 +8,11 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -30,6 +33,7 @@ public class Download extends Activity {
 	ImageView my_image;
 	// Progress dialog type (0 - for Horizontal progress bar)
 	public static final int progress_bar_type = 0; 
+	String sgnm;
 	
 	// File url to download
 	//private static String file_url = "http://radiant-forest-1098.herokuapp.com/media/media/music/Eminem_-_Relapse_-_underground_-_20.mp3";
@@ -37,6 +41,12 @@ public class Download extends Activity {
 	//http://api.androidhive.info/progressdialog/hive.jpg
 	Intent intent;
 	String path;
+	Context context;
+	
+	/*public Download(Context context)
+	{
+		this.context=context;
+	}*/
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,7 +80,7 @@ public class Download extends Activity {
 		switch (id) {
 		case progress_bar_type:
 			pDialog = new ProgressDialog(this);
-			pDialog.setMessage("Downloading file. Please wait...");
+			pDialog.setMessage("Downloading song. Please wait...");
 			pDialog.setIndeterminate(false);
 			pDialog.setMax(100);
 			pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -114,7 +124,7 @@ public class Download extends Activity {
 	            InputStream input = new BufferedInputStream(url.openStream(), 8192);
 	            String songUrl=path;
 	            String[] songname=songUrl.split("/");
-	            String sgnm=songname[6];
+	            sgnm=songname[6];
 	            // Output stream to write file
 	            OutputStream output = new FileOutputStream("/sdcard/"+sgnm);
 
@@ -163,11 +173,30 @@ public class Download extends Activity {
 			// dismiss the dialog after the file was downloaded
 			dismissDialog(progress_bar_type);
 			
+			//Log.d
+			AlertDialog alertDialog=new AlertDialog.Builder(Download.this).create();
+			//AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+			alertDialog.setTitle("Download complete");
+			alertDialog.setMessage("Completed downloading the song "+sgnm+" to your SD Card.");
+			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					AndroidTabAndListView.tabHost.setCurrentTab(0);
+					AndroidTabAndListView.tabHost.getTabWidget().getChildAt(2)
+					.setVisibility(View.GONE);
+
+				}
+			});
+			alertDialog.setIcon(R.drawable.about);
+			//btnPlayStop.setBackgroundResource(R.drawable.play);
+			alertDialog.show();
 			// Displaying downloaded image into image view
 			// Reading image path from sdcard
-			String imagePath = Environment.getExternalStorageDirectory().toString() + "/Eminem_-_Relapse_-_underground_-_20.mp3";
+			//String imagePath = Environment.getExternalStorageDirectory().toString() + "/Eminem_-_Relapse_-_underground_-_20.mp3";
 			// setting downloaded into image view
-			my_image.setImageDrawable(Drawable.createFromPath(imagePath));
+			//my_image.setImageDrawable(Drawable.createFromPath(imagePath));
 		}
 
 	}

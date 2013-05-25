@@ -81,7 +81,8 @@
         <activity android:name=".Help2" />
 
         <!-- .Search Activity -->
-        <activity android:name=".Search" />
+        <activity android:name=".Search"
+            android:windowSoftInputMode="stateHidden" />
 
         <!-- .Search2 Activity -->
         <activity android:name=".Search2" />

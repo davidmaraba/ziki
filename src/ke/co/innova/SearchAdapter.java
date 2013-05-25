@@ -2,44 +2,62 @@ package ke.co.innova;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.provider.SyncStateContract.Constants;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.Intent;
 
-public class New_Releases_Adapter extends BaseAdapter {
+public class SearchAdapter extends BaseAdapter implements Filterable{
 
 	private Activity activity;
 	private ArrayList<HashMap<String, String>> data;
+	private ArrayList<HashMap<String, String>> Newdata;
+	private ArrayList<String> listpicOrigin;
 	private static LayoutInflater inflater = null;
 	public ImageLoader imageLoader;
 	private Context context;
-
-	public New_Releases_Adapter(Activity a,
-			ArrayList<HashMap<String, String>> d, Context context) {
+	// ListFilter  filter ;
+	   // List<Item> filteredItems;
+	public SearchAdapter(Activity a, ArrayList<HashMap<String, String>> d,
+			Context context) {
 		activity = a;
 		data = d;
 		inflater = (LayoutInflater) activity
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		imageLoader = new ImageLoader(activity.getApplicationContext());
 		this.context = context;
+		
+		Newdata=d;
+		//this.listpicOrigin = new ArrayList<String>();
+		//this.listpicOrigin.a
+		//this.listpicOrigin.addAll(data);
+       // this.listpicOrigin.adda
+		
 	}
+	
+	public SearchAdapter(Context c) {
+		  this.context=c;
+				  }
 
-	public New_Releases_Adapter(Context context) {
-		this.context = context;
-	}
 
 	public int getCount() {
-		return data.size();
+		return Newdata.size();
 	}
 
 	public Object getItem(int position) {
@@ -74,19 +92,20 @@ public class New_Releases_Adapter extends BaseAdapter {
 		// ==
 
 		HashMap<String, String> song = new HashMap<String, String>();
-		song = data.get(position);
-		String songName = song.get(New_Releases.TAG_SONG);
-		String artistName = song.get(New_Releases.TAG_ARTIST);
+		song = Newdata.get(position);
+		String songName = song.get(Search.TAG_SONG);
+		String artistName = song.get(Search.TAG_ARTIST);
 		String artist_song = songName + " " + artistName;
-		// pid.setText(song.get(MyHits.TAG_PID));
+		// pid.setText(song.get(Search.TAG_PID));
 		name.setText(artist_song);
 		// duration.setText(song.get(CustomizedListView.KEY_DURATION));
 		// imageLoader.DisplayImage(song.get(SubscribedActivity.KEY_THUMB_URL),
 		// thumb_image);
-		imageLoader.DisplayImage(song.get(New_Releases.TAG_PHOTO), thumb_image);
+		imageLoader.DisplayImage(song.get(Search.TAG_PHOTO), thumb_image);
 
-		final String path_mp3 = song.get(New_Releases.TAG_MP3);
-		final String path_mp4 = song.get(New_Releases.TAG_MP4);
+		final String path_mp3 = song.get(Search.TAG_MP3);
+		final String path_mp4 = song.get(Search.TAG_MP4);
+		
 		download.setOnClickListener(new View.OnClickListener() {
 
 			/*
@@ -152,4 +171,55 @@ public class New_Releases_Adapter extends BaseAdapter {
 
 		return vi;
 	}
+
+	 @Override
+	    public Filter getFilter()
+	    {
+	       return new Filter()
+	       {
+	            @Override
+	            protected FilterResults performFiltering(CharSequence charSequence)
+	            {
+	                FilterResults results = new FilterResults();
+
+	                //If there's nothing to filter on, return the original data for your list
+	                if(charSequence == null || charSequence.length() == 0)
+	                {
+	                    results.values = data;
+	                    results.count = data.size();
+	                }
+	                else
+	                {
+	                    ArrayList<HashMap<String,String>> filterResultsData = new ArrayList<HashMap<String,String>>();
+
+	                    for(HashMap<String,String> datas : data)
+	                    {
+	                        //In this loop, you'll filter through originalData and compare each item to charSequence.
+	                        //If you find a match, add it to your new ArrayList
+	                        //I'm not sure how you're going to do comparison, so you'll need to fill out this conditional
+	                        if(datas.toString().trim().toLowerCase().contains(charSequence.toString().toLowerCase().trim()))
+	                        {
+	                            filterResultsData.add(datas);
+	                        }
+	                    }            
+
+	                    results.values = filterResultsData;
+	                    results.count = Newdata.size();
+	                }
+
+	                return results;
+	            }
+
+	            @Override
+	            protected void publishResults(CharSequence charSequence, FilterResults filterResults)
+	            {
+	                Newdata = (ArrayList<HashMap<String,String>>)filterResults.values;
+	                notifyDataSetChanged();
+	            }
+	        };
+	    }
+
+	
 }
+
+

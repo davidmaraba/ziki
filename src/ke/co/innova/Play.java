@@ -20,7 +20,7 @@ public class Play extends Activity implements OnSeekBarChangeListener {
 
 	Intent serviceIntent;
 	Button btnPlayStop;
-	boolean isMusicPlaying = false;
+	public static boolean isMusicPlaying = false;
 
 	private boolean isOnline;
 
@@ -116,7 +116,7 @@ public class Play extends Activity implements OnSeekBarChangeListener {
 		}
 	}
 
-	private void stopPlayingService() {
+	public void stopPlayingService() {
 		// TODO Auto-generated method stub
 		if (mBroadcastIsRegistered) {
 			try {

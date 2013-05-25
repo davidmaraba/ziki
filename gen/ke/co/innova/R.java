@@ -49,7 +49,8 @@ public final class R {
         public static final int search=0x7f020023;
     }
     public static final class id {
-        public static final int address=0x7f05001c;
+        public static final int VideoView=0x7f05001c;
+        public static final int address=0x7f05001d;
         public static final int artist=0x7f05000f;
         public static final int btntopNewReleases=0x7f05000a;
         public static final int btntopZikiHits=0x7f050009;
@@ -60,17 +61,18 @@ public final class R {
         public static final int date=0x7f050007;
         public static final int download=0x7f050011;
         public static final int email=0x7f050014;
-        public static final int email_label=0x7f05001e;
+        public static final int email_label=0x7f050020;
         public static final int expandable_list=0x7f050000;
         public static final int from=0x7f050001;
         public static final int help=0x7f050005;
+        public static final int inputSearch=0x7f05001e;
         public static final int list_image=0x7f05000e;
         public static final int list_item=0x7f05000c;
         public static final int list_item_text_view=0x7f050017;
         public static final int mobile=0x7f050015;
-        public static final int mobile_label=0x7f05001f;
+        public static final int mobile_label=0x7f050021;
         public static final int name=0x7f050013;
-        public static final int name_label=0x7f05001d;
+        public static final int name_label=0x7f05001f;
         public static final int play=0x7f050010;
         public static final int play_pause_button=0x7f05001a;
         public static final int seekBar01=0x7f05001b;
@@ -102,8 +104,9 @@ public final class R {
         public static final int play=0x7f030010;
         public static final int play_video=0x7f030011;
         public static final int profile=0x7f030012;
-        public static final int single_list_item=0x7f030013;
-        public static final int songs_lists=0x7f030014;
+        public static final int search_layout=0x7f030013;
+        public static final int single_list_item=0x7f030014;
+        public static final int songs_lists=0x7f030015;
     }
     public static final class string {
         public static final int app_name=0x7f040001;

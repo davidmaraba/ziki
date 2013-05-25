@@ -87,16 +87,32 @@ public class LazyAdapter extends BaseAdapter {
 
 		final String path_mp3 = song.get(MyHits.TAG_MP3);
 		final String path_mp4 = song.get(MyHits.TAG_MP4);
+		
 		download.setOnClickListener(new View.OnClickListener() {
 
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see android.view.View.OnClickListener#onClick(android.view.View)
+			 */
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				((TextView) AndroidTabAndListView.tabHost.getTabWidget()
+						.getChildAt(2).findViewById(android.R.id.title))
+						.setText("Downloading");
 				AndroidTabAndListView.downloadIntent.putExtra("mp4_url",
 						path_mp4);
+				AndroidTabAndListView.playSpec
+						.setContent(AndroidTabAndListView.downloadIntent);
 
-				AndroidTabAndListView ant = new AndroidTabAndListView();
-				ant.startDownloadActivity();
+				AndroidTabAndListView.tabHost.getTabWidget().getChildAt(2)
+						.setVisibility(View.VISIBLE);
+				AndroidTabAndListView.tabHost.setCurrentTab(2);
+				/*
+				 * AndroidTabAndListView ant=new AndroidTabAndListView();
+				 * ant.startDownloadActivity();
+				 */
 			}
 		});
 		watch.setOnClickListener(new View.OnClickListener() {

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.sax.StartElementListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class TopZikiAdapter extends BaseAdapter {
 	public ImageLoader imageLoader;
 	private Context context;
 
+	Play plays;
 	public TopZikiAdapter(Activity a, ArrayList<HashMap<String, String>> d,
 			Context context) {
 		activity = a;
@@ -90,14 +92,29 @@ public class TopZikiAdapter extends BaseAdapter {
 
 		download.setOnClickListener(new View.OnClickListener() {
 
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see android.view.View.OnClickListener#onClick(android.view.View)
+			 */
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				((TextView) AndroidTabAndListView.tabHost.getTabWidget()
+						.getChildAt(2).findViewById(android.R.id.title))
+						.setText("Downloading");
 				AndroidTabAndListView.downloadIntent.putExtra("mp4_url",
 						path_mp4);
+				AndroidTabAndListView.playSpec
+						.setContent(AndroidTabAndListView.downloadIntent);
 
-				AndroidTabAndListView ant = new AndroidTabAndListView();
-				ant.startDownloadActivity();
+				AndroidTabAndListView.tabHost.getTabWidget().getChildAt(2)
+						.setVisibility(View.VISIBLE);
+				AndroidTabAndListView.tabHost.setCurrentTab(2);
+				/*
+				 * AndroidTabAndListView ant=new AndroidTabAndListView();
+				 * ant.startDownloadActivity();
+				 */
 			}
 		});
 		watch.setOnClickListener(new View.OnClickListener() {
@@ -125,6 +142,13 @@ public class TopZikiAdapter extends BaseAdapter {
 				 * in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				 * in.putExtra("url", path); context.startActivity(in);
 				 */
+				if(Play.isMusicPlaying)
+				{
+					plays=new Play();
+					plays.stopPlayingService();
+					
+				}
+				
 				AndroidTabAndListView.playIntent.putExtra("mp3_url", path_mp3);
 				AndroidTabAndListView.playSpec
 						.setContent(AndroidTabAndListView.playIntent);
@@ -133,6 +157,7 @@ public class TopZikiAdapter extends BaseAdapter {
 
 				// AndroidTabAndListView.tabHost.setup();
 				AndroidTabAndListView.tabHost.setCurrentTab(2);
+			
 			}
 		});
 
