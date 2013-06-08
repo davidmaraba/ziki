@@ -28,7 +28,7 @@ import android.widget.TextView;
 public class AndroidParsingActivity extends ListActivity {
 
 	// url to make request
-	private static String url = "http://powerful-hamlet-7423.herokuapp.com/songs/";
+	private static String url = "http://ziki.innova-africa.com/songs/";
 	//http://powerful-hamlet-7423.herokuapp.com/api/v1/mymodel/
 	
 	// JSON Node names
@@ -56,7 +56,7 @@ public class AndroidParsingActivity extends ListActivity {
 		
 		try{
 				
-			URL ziki = new URL("http://powerful-hamlet-7423.herokuapp.com/songs/");
+			URL ziki = new URL("http://ziki.innova-africa.com/songs/");
 	        URLConnection tc = ziki.openConnection();
 	        BufferedReader in = new BufferedReader(new InputStreamReader(
 	                tc.getInputStream()));

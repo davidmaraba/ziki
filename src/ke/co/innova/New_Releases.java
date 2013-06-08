@@ -59,10 +59,10 @@ public class New_Releases extends ListActivity{
 	public static final String TAG_ID = "id";
 	public static final String TAG_MP3="mp3_music_file";
 	public static final String TAG_MP4="mp4_music_file";
-	public static final String TAG_CHART_RANK="charts_rank";
+	//public static final String TAG_CHART_RANK="charts_rank";
 	
-	public static final String media_url = "http://radiant-forest-1098.herokuapp.com";
-	public static final String photo_url = "http://radiant-forest-1098.herokuapp.com";
+	public static final String media_url = "http://ziki.innova-africa.com";
+	public static final String photo_url = "http://ziki.innova-africa.com";
 
 	public static final String KEY_THUMB_URL="artist_image";
 	// Hashmap for ListView
@@ -138,12 +138,13 @@ public class New_Releases extends ListActivity{
         
 try{
 				
-				URL ziki = new URL("http://radiant-forest-1098.herokuapp.com/gospelapi/");
+				URL ziki = new URL("http://ziki.innova-africa.com/newapi/");
 		        URLConnection tc = ziki.openConnection();
 		        BufferedReader in = new BufferedReader(new InputStreamReader(
 		                tc.getInputStream()));
 		        String line;
-		        //Log.d("JSON",line);
+		        String home=in.toString();
+		        Log.d("JSON",home);
 		        while ((line = in.readLine()) != null) {
 		        	//line = in.readLine();
 		        	songs = new JSONArray(line);
@@ -155,7 +156,7 @@ try{
 						//String artist = c.getString(TAG_ARTIST);
 						String artist=c.getString(TAG_ARTIST);
 						String duration = c.getString(TAG_DURATION);
-						String chartRank=c.getString(TAG_CHART_RANK);
+						//String chartRank=c.getString(TAG_CHART_RANK);
 						//String label = c.getString(TAG_LABEL);
 						String photo = media_url + c.getString(TAG_PHOTO);
 						String song = c.getString(TAG_SONG);
@@ -175,7 +176,7 @@ try{
 						map.put(TAG_PHOTO, photo);
 						map.put(TAG_ARTIST, artist);
 						//map.put(TAG_DURATION, duration);
-						map.put(TAG_CHART_RANK, chartRank);
+						//map.put(TAG_CHART_RANK, chartRank);
 						map.put(TAG_SONG, song);
 						map.put(TAG_LABEL, label);
 						map.put(TAG_MP3, mp3);
@@ -183,6 +184,7 @@ try{
 						
 						// adding HashList to ArrayList
 						songsList.add(map);
+						Log.d("JSON",line);
 					}
 		        }
             } catch (JSONException e) {

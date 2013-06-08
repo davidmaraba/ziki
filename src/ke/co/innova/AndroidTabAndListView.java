@@ -17,7 +17,7 @@ public class AndroidTabAndListView extends TabActivity {
 	private static final String PROFILE_SPEC = "Help";
 	public static TabHost tabHost;
 	public static TabSpec inboxSpec,hitsSpec,playSpec,profileSpec,outboxSpec;
-	public static Intent playVideoIntent,gospelIntent,zikiHitsIntent,newReleasesInten,playIntent,downloadIntent;
+	public static Intent playVideoIntent,gospelIntent,zikiHitsIntent,newReleasesInten,playIntent,downloadIntent,playingIntent;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +31,7 @@ public class AndroidTabAndListView extends TabActivity {
         
         tabHost = getTabHost();
         
+        playingIntent=new Intent(this,Play.class);
         // Inbox Tab
         inboxSpec = tabHost.newTabSpec(INBOX_SPEC);
         // Tab Icon
@@ -49,6 +50,7 @@ public class AndroidTabAndListView extends TabActivity {
         playSpec=tabHost.newTabSpec(PLAY_SPEC);
         playSpec.setIndicator(PLAY_SPEC,getResources().getDrawable(R.drawable.musicplayer));
         playIntent=new Intent(this,Play.class);
+       // playIntent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
         playSpec.setContent(playIntent);
         
          // Outbox Tab
@@ -80,4 +82,5 @@ public class AndroidTabAndListView extends TabActivity {
 		// downloadIntent=new Intent(this,Download.class);
 		startActivity(downloadIntent);
 	}
+	
 }

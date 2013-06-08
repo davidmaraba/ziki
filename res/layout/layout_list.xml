@@ -48,7 +48,7 @@
     <!-- Play Button -->
     <Button
        
-        android:id="@+id/play"
+        android:id="@+id/playes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/play_icon" 

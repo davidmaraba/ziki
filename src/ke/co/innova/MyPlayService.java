@@ -211,6 +211,7 @@ public class MyPlayService extends Service implements OnPreparedListener,
 		CharSequence contentTitle = "Ziki Music Playing";
 		CharSequence contentText = "Listen and Enjoy awesome Ziki Music";
 		Intent notificationIntent = new Intent(this, Play.class);
+		notificationIntent.putExtra("mp3_url", Play.path);
 		PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
 				notificationIntent, 0);
 
@@ -280,6 +281,8 @@ public class MyPlayService extends Service implements OnPreparedListener,
 		// TODO Auto-generated method stub
 		stopMedia();
 		stopSelf();
+		
+		//Play.btnPlayStop.setBackgroundResource(R.drawable.play);
 	}
 
 	@Override
@@ -300,6 +303,7 @@ public class MyPlayService extends Service implements OnPreparedListener,
 		if (mediaPlayer.isPlaying()) {
 			mediaPlayer.stop();
 		}
+		songEnded=1;
 	}
 
 	@Override

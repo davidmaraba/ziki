@@ -235,7 +235,7 @@ public class LoadSubscriptions extends AsyncTask<String, String, String>
 		
 
           try {
-        	  URL ziki = new URL("http://powerful-hamlet-7423.herokuapp.com/songs/");
+        	  URL ziki = new URL("http://ziki.innova-africa.com/gospelapi/");
 		        URLConnection tc = ziki.openConnection();
 		        BufferedReader in = new BufferedReader(new InputStreamReader(
 		                tc.getInputStream()));

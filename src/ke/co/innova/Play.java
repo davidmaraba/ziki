@@ -19,7 +19,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 public class Play extends Activity implements OnSeekBarChangeListener {
 
 	Intent serviceIntent;
-	Button btnPlayStop;
+	public static Button btnPlayStop;
 	public static boolean isMusicPlaying = false;
 
 	private boolean isOnline;
@@ -35,7 +35,7 @@ public class Play extends Activity implements OnSeekBarChangeListener {
 	Intent intent;
 	boolean mBroadcastIsRegistered;
 	Intent intents;
-	String path;
+	public static String path;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -144,6 +144,7 @@ public class Play extends Activity implements OnSeekBarChangeListener {
 			serviceIntent.putExtra("audioLink", path);
 			try {
 				startService(serviceIntent);
+				//finish();
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

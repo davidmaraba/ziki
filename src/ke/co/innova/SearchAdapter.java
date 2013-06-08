@@ -71,7 +71,7 @@ public class SearchAdapter extends BaseAdapter implements Filterable{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View vi = convertView;
 		if (convertView == null)
-			vi = inflater.inflate(R.layout.list_row, null);
+			vi = inflater.inflate(R.layout.layout_list, null);
 
 		// TextView pid = (TextView)vi.findViewById(R.id.title); // title
 		TextView name = (TextView) vi.findViewById(R.id.artist); // artist name
@@ -79,7 +79,7 @@ public class SearchAdapter extends BaseAdapter implements Filterable{
 		// duration
 		ImageView thumb_image = (ImageView) vi.findViewById(R.id.list_image); // thumb
 																				// image
-		Button play = (Button) vi.findViewById(R.id.play);
+		final Button play = (Button) vi.findViewById(R.id.playes);
 		Button watch = (Button) vi.findViewById(R.id.watch);
 		Button download = (Button) vi.findViewById(R.id.download);
 
@@ -138,6 +138,7 @@ public class SearchAdapter extends BaseAdapter implements Filterable{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				AndroidTabAndListView.playVideoIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				AndroidTabAndListView.playVideoIntent.putExtra("mp4_url",
 						path_mp4);
 				AndroidTabAndListView.playSpec
@@ -152,17 +153,21 @@ public class SearchAdapter extends BaseAdapter implements Filterable{
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				/*
-				 * Intent in=new Intent(context,Play.class);
-				 * in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				 * in.putExtra("url", path); context.startActivity(in);
-				 */
-				AndroidTabAndListView.playIntent.putExtra("mp3_url", path_mp3);
+				
+				if(play.isPressed())
+				{
+					AndroidTabAndListView.playingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				}
+				
+				AndroidTabAndListView.playingIntent.putExtra("mp3_url", path_mp3);
+				
+
 				AndroidTabAndListView.playSpec
-						.setContent(AndroidTabAndListView.playIntent);
+						.setContent(AndroidTabAndListView.playingIntent);
+
 				AndroidTabAndListView.tabHost.getTabWidget().getChildAt(2)
 						.setVisibility(View.VISIBLE);
+				
 
 				// AndroidTabAndListView.tabHost.setup();
 				AndroidTabAndListView.tabHost.setCurrentTab(2);

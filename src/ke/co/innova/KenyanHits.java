@@ -85,7 +85,7 @@ public class KenyanHits extends Gospel {
 			
 			try{
 				
-				URL ziki = new URL("http://powerful-hamlet-7423.herokuapp.com/songs/");
+				URL ziki = new URL("http://ziki.innova-africa.com/kenyanapi/");
 		        URLConnection tc = ziki.openConnection();
 		        BufferedReader in = new BufferedReader(new InputStreamReader(
 		                tc.getInputStream()));

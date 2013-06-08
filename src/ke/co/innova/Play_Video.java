@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.util.Log;
 
 import android.widget.MediaController;
@@ -16,15 +17,22 @@ import android.widget.VideoView;
 
 public class Play_Video extends Activity {
     // Put in your Video URL here
-    private String VideoURL = "http://192.168.8.50/bangoh/my.mp4";
+    //private String VideoURL = "http://192.168.8.50/bangoh/my.mp4";
     // Declare some variables
     private ProgressDialog pDialog;
     VideoView videoview;
  
+    Intent intents;
+	String path;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Set the layout from video_main.xml
+        
+        intents = getIntent();
+		path = intents.getExtras().getString("mp4_url");
+		
         setContentView(R.layout.play_video);
         // Find your VideoView in your video_main.xml layout
         videoview = (VideoView) findViewById(R.id.VideoView);
@@ -41,9 +49,9 @@ public class Play_Video extends Activity {
             // Create a progressbar
             pDialog = new ProgressDialog(Play_Video.this);
             // Set progressbar title
-            pDialog.setTitle("Android Video Streaming Tutorial");
+            pDialog.setTitle("Buffering..");
             // Set progressbar message
-            pDialog.setMessage("Buffering...");
+            pDialog.setMessage("Please wait as the song loads");
             pDialog.setIndeterminate(false);
             // Show progressbar
             pDialog.show();
@@ -65,7 +73,7 @@ public class Play_Video extends Activity {
                         Play_Video.this);
                 mediacontroller.setAnchorView(videoview);
                 // Get the URL from String VideoURL
-                Uri video = Uri.parse(VideoURL);
+                Uri video = Uri.parse(path);
                 videoview.setMediaController(mediacontroller);
                 videoview.setVideoURI(video);
  
